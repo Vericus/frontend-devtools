@@ -22,7 +22,9 @@
     "lib": "lib"
   },
   "files": [
-    "lib"
+    "lib",
+    "package.json",
+    "README.md"
   ],
   "publishConfig": {
     "access": "public"
