@@ -1,0 +1,8 @@
+{
+  "root": true,
+  "extends": ["@vericus/eslint-config-vericus-base"],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {}
+}

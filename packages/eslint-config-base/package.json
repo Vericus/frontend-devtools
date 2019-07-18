@@ -1,0 +1,50 @@
+{
+  "name": "@vericus/eslint-config-vericus-base",
+  "version": "1.0.0",
+  "description": "Vericus' eslint base config",
+  "keywords": [
+    "eslint",
+    "eslintconfig"
+  ],
+  "author": "Irwan Fario Subastian <irwan@cadmus.io>",
+  "homepage": "https://github.com/Vericus/frontend-devtools#readme",
+  "license": "MIT",
+  "main": "index.js",
+  "files": [
+    "index",
+    "package.json",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vericus/frontend-devtools.git"
+  },
+  "peerDependencies": {
+    "@typescript-eslint/eslint-plugin": "^1.12.0",
+    "@typescript-eslint/parser": "^1.12.0",
+    "babel-eslint": "^10.0.2",
+    "eslint": "^5.0.0",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-config-prettier": "^5.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.2",
+    "eslint-plugin-react-hooks": "^1.6.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^1.12.0",
+    "@typescript-eslint/parser": "^1.12.0",
+    "eslint": "^5.0.0",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-config-prettier": "^5.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.2",
+    "eslint-plugin-react-hooks": "^1.6.1",
+    "prettier": "^1.18.2"
+  },
+  "bugs": {
+    "url": "https://github.com/Vericus/frontend-devtools/issues"
+  }
+}

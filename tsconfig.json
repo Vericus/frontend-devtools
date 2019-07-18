@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "target": "esnext",
+    "declaration": true,
+    "declarationMap": true,
+    "typeRoots": ["./typings", "./node_modules/@types"],
+    "sourceMap": true
+  }
+}

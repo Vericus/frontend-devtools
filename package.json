@@ -1,0 +1,71 @@
+{
+  "name": "@vericus/frontend-devtools",
+  "version": "1.0.0",
+  "description": "Devtools for Vericus' client side library/app projects",
+  "author": "Irwan Fario Subastian <irwan@cadmus.io>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "lint": "eslint . --ext .js,.ts,.jsx,.tsx",
+    "postinstall": "npm run build",
+    "bootstrap": "rollup -c ./rollup.bootstrap.ts",
+    "prebuild": "del packages/**/lib && npm run bootstrap",
+    "build": "lerna run build --stream && bundlesize",
+    "watch": "lerna run watch --stream"
+  },
+  "dependencies": {
+    "@lerna/package": "^3.14.2",
+    "@lerna/project": "^3.15.0",
+    "builtin-modules": "^3.1.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-node-resolve": "^5.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.0",
+    "@babel/plugin-proposal-numeric-separator": "^7.2.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.5.0",
+    "@babel/plugin-transform-modules-umd": "^7.2.0",
+    "@babel/preset-env": "^7.5.4",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/babel__core": "^7.1.2",
+    "@types/node": "^12.6.2",
+    "@types/npm-package-arg": "^6.1.0",
+    "@types/rollup": "^0.54.0",
+    "@typescript-eslint/eslint-plugin": "^1.11.0",
+    "@typescript-eslint/parser": "^1.11.0",
+    "@vericus/rollup-config": "*",
+    "babel-eslint": "^10.0.2",
+    "bundlesize": "^0.18.0",
+    "chokidar": "^3.0.2",
+    "del-cli": "^2.0.0",
+    "eslint": "^5.0.0",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-config-prettier": "^5.0.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.2",
+    "eslint-plugin-react-hooks": "^1.6.1",
+    "lerna": "^3.15.0",
+    "npm-package-arg": "^6.1.0",
+    "prettier": "^1.18.2",
+    "rollup": "^1.16.7",
+    "rollup-plugin-eslint": "^6.0.0",
+    "rollup-plugin-terser": "^5.1.1",
+    "typescript": "^3.5.3"
+  },
+  "bundlesize": [
+    {
+      "path": "./packages/eslint-config-base/index.js",
+      "maxSize": "1 KB"
+    },
+    {
+      "path": "./packages/rollup-config/lib/rollup-config.umd.min.js",
+      "maxSize": "3 KB"
+    }
+  ]
+}

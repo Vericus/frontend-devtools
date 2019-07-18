@@ -1,0 +1,8 @@
+node_modules
+dist
+lib
+jest.config.js
+fixtures
+shared-fixtures
+/node_modules/*
+*.d.ts

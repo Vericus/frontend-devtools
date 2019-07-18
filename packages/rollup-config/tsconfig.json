@@ -1,0 +1,8 @@
+{
+  "extends": "../../tsconfig.json",
+  "exclude": ["./rollup.config.ts"],
+  "compilerOptions": {
+    "outDir": "./lib"
+  },
+  "include": ["./src/**/*"]
+}

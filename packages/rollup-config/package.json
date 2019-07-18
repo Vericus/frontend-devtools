@@ -1,0 +1,62 @@
+{
+  "name": "@vericus/rollup-config",
+  "version": "1.0.0",
+  "description": "common rollup config for @vericus",
+  "keywords": [
+    "rollup",
+    "rollupconfig",
+    "typescript",
+    "commmonjs",
+    "umd",
+    "esmodule"
+  ],
+  "author": "Irwan Fario Subastian <irwan@cadmus.io>",
+  "homepage": "https://github.com/Vericus/frontend-devtools#readme",
+  "license": "MIT",
+  "main": "lib/rollup-config.cjs.js",
+  "module": "lib/rollup-config.esm.js",
+  "types": "lib/index.d.ts",
+  "umd": "lib/rollup-config.umd.js",
+  "umdMin": "lib/rollup-config.umd.min.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vericus/frontend-devtools.git"
+  },
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "TSC_WATCHFILE=UseFsEventsWithFallbackDynamicPolling npm run type-check -- --watch",
+    "build": "tsc -p .",
+    "build:watch": "TSC_WATCHFILE=UseFsEventsWithFallbackDynamicPolling npm run build -- --watch",
+    "postbuild": "rollup -c ./rollup.config.ts",
+    "postbuild:watch": "npm run postbuild -- --watch",
+    "watch": "npx npm-run-all -l -r -n -p *:watch"
+  },
+  "bugs": {
+    "url": "https://github.com/Vericus/frontend-devtools/issues"
+  },
+  "peerDependencies": {
+    "@babel/core": "^7.5.4",
+    "@babel/plugin-transform-modules-commonjs": "^7.5.0",
+    "@babel/plugin-transform-modules-umd": "^7.2.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-eslint": "^7.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.1.1",
+    "typescript": "^3.5.3"
+  },
+  "dependencies": {
+    "@lerna/package": "^3.14.2",
+    "camelcase": "^5.3.1",
+    "find-and-read-package-json": "^2.0.2"
+  }
+}

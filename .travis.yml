@@ -1,0 +1,9 @@
+language: node_js
+node_js: "10"
+cache: yarn
+
+env:
+  - BUNDLESIZE_GITHUB_TOKEN=fc25b6dda91063ddef14980d323ef26b05e2c56e
+
+script:
+  - yarn build
