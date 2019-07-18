@@ -2,8 +2,5 @@ language: node_js
 node_js: "10"
 cache: yarn
 
-env:
-  - BUNDLESIZE_GITHUB_TOKEN=7869d61c345892715009cda47fc4d89d261c7782
-
 script:
   - yarn build
