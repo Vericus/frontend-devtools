@@ -1,6 +1,6 @@
 {
   "name": "@vericus/eslint-config-vericus-base",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Vericus' eslint base config",
   "keywords": [
     "eslint",
