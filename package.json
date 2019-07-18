@@ -10,7 +10,6 @@
   ],
   "scripts": {
     "lint": "eslint . --ext .js,.ts,.jsx,.tsx",
-    "postinstall": "npm run build",
     "bootstrap": "rollup -c ./rollup.bootstrap.ts",
     "prebuild": "del packages/**/lib && npm run bootstrap",
     "build": "lerna run build --stream && bundlesize",
