@@ -3,7 +3,7 @@ import path from "path";
 import findAndReadPackageJSON from "find-and-read-package-json";
 import Package from "@lerna/package";
 import camelCase from "camelcase";
-import { transformSync } from "@babel/core";
+import { transformSync, loadOptions } from "@babel/core";
 import * as cjsModulesTransform from "@babel/plugin-transform-modules-commonjs";
 import * as umdModulesTransform from "@babel/plugin-transform-modules-umd";
 import nodeResolve from "rollup-plugin-node-resolve";
@@ -124,6 +124,7 @@ function rollup({
           {
             // eslint-disable-next-line
             transform(source: string, id: string) {
+              loadOptions();
               const output = transformSync(source, {
                 inputSourceMap: JSON.parse(
                   fs.readFileSync(id + ".map").toString()
