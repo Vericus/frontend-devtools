@@ -9,7 +9,6 @@ import * as umdModulesTransform from "@babel/plugin-transform-modules-umd";
 import nodeResolve from "rollup-plugin-node-resolve";
 import babelPlugin from "rollup-plugin-babel";
 import { terser as minify } from "rollup-plugin-terser";
-import { eslint } from "rollup-plugin-eslint";
 // eslint-disable-next-line
 import { RollupOptions, ModuleFormat } from "rollup";
 
@@ -86,7 +85,6 @@ function rollup({
           sourcemap: true
         },
         plugins: [
-          eslint({ throwOnError: true }),
           nodeResolve({
             preferBuiltins: true,
             extensions
