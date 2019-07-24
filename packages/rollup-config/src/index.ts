@@ -9,6 +9,7 @@ import * as umdModulesTransform from "@babel/plugin-transform-modules-umd";
 import nodeResolve from "rollup-plugin-node-resolve";
 import babelPlugin from "rollup-plugin-babel";
 import { terser as minify } from "rollup-plugin-terser";
+import { eslint } from "rollup-plugin-eslint";
 // eslint-disable-next-line
 import { RollupOptions, ModuleFormat } from "rollup";
 
@@ -48,7 +49,7 @@ function rollup({
       ...pkg.peerDependencies
     }).reduce((acc, k): object => ({ ...acc, [k]: camelCase(k) }), {});
 
-    globals = {
+    const rollupgGlobals = {
       fs: "fs",
       path: "path",
       ...globals,
@@ -57,7 +58,7 @@ function rollup({
     };
 
     function external(id: string): boolean {
-      return Object.prototype.hasOwnProperty.call(globals, id);
+      return Object.prototype.hasOwnProperty.call(rollupgGlobals, id);
     }
 
     function outputFile(format: string): string {
@@ -89,6 +90,7 @@ function rollup({
             preferBuiltins: true,
             extensions
           }),
+          eslint({}),
           babelPlugin({
             extensions,
             runtimeHelpers: true,
@@ -125,7 +127,7 @@ function rollup({
               loadOptions();
               const output = transformSync(source, {
                 inputSourceMap: JSON.parse(
-                  fs.readFileSync(id + ".map").toString()
+                  fs.readFileSync(`${id}.map`).toString()
                 ),
                 sourceMaps: true,
                 plugins: [
@@ -147,7 +149,7 @@ function rollup({
                 // the output options above, and manually write the CJS and UMD source
                 // maps here.
                 fs.writeFileSync(
-                  outputFile(toFormat) + ".map",
+                  `${outputFile(toFormat)}.map`,
                   JSON.stringify(output.map)
                 );
 
@@ -165,8 +167,8 @@ function rollup({
     return [
       fromSource("esm"),
       fromESM("cjs"),
-      fromESM("umd"),
-      {
+      !watch && fromESM("umd"),
+      !watch && {
         input: outputFile("umd"),
         watch,
         output: {
@@ -193,7 +195,7 @@ function rollup({
           ...extraPlugins
         ]
       }
-    ];
+    ].filter(Boolean) as RollupOptions[];
   };
 }
 
