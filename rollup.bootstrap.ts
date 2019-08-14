@@ -6,6 +6,7 @@ import nodeResolve from "rollup-plugin-node-resolve";
 
 const isExternal = pkg => {
   const deps = Object.keys(
+    // eslint-disable-next-line prefer-object-spread
     Object.assign(
       {},
       pkg.optionalDependencies || {},
@@ -23,7 +24,7 @@ const isExternal = pkg => {
       return { result: true, reason: "builtin" };
     }
 
-    if (deps.some(dep => dep === id || id.startsWith(dep + "/"))) {
+    if (deps.some(dep => dep === id || id.startsWith(`${dep}/`))) {
       return { result: true, reason: "configured-dep" };
     }
 
@@ -73,8 +74,10 @@ const perPkg = (_, pkg) => {
 const config = async () => {
   const result = [];
   const project = new Project(__dirname);
+  // eslint-disable-next-line no-restricted-syntax
   for (const pkg of await project.getPackages()) {
     const { scripts } = pkg;
+    // eslint-disable-next-line no-prototype-builtins
     if (scripts.hasOwnProperty("build")) {
       const pkgConf = perPkg(project, pkg);
       if (Array.isArray(pkgConf)) {
